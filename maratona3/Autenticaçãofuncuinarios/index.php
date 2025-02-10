@@ -22,6 +22,7 @@
          break;
          case ($funcionario == "João" && $permissão == true && $ativo == true):
             echo "Acesso como funcionário";
+            break;
             default:
             echo "Login incorreto e/ou sem permissão";
     }
