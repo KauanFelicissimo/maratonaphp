@@ -3,30 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Média</title>
-</head><h2>Média</h2>
+    <title>Primos</title>
+</head><h2>Identificando números primos</h2>
 <body>
     <?php 
-    $array = [10, 20, 30 ,40, 50 ,60, 70, 80, 90, 100];
-    // Count serve para contar o número de elementos que foram inseridos dentro de um array
-    $count = count($array);
-
-    for($i = 0 ; $i < 1; $i++){
-        // array_sum é usado para somar todos os números em um array
-        $média =  array_sum($array) / count($array);
-        echo "A média desses números é: ";
-        echo "<pre>";
-        print_r($array);
-        echo  $média . "<br>";
-
+    
+    function ehPrimo($numero) {
+        // Caso o número for menor ou igual 1 ele ira dar false já que não existe numeros menores ou iguais a 1 primos
+        if ($numero <= 1) {
+            return false;
+        }
+        // Caso o número for igual a 2 ele ira dar true porque 2 é um número primo
+        if ($numero == 2) {
+            return true;
+        }
+        // Caso o número for divisivel por 2 ele irá dar false 
+        if ($numero % 2 == 0) {
+            return false;
+        }
+        // o número irá ser dividido várias vezes aé chegar a raiz quadrada do número escolhido até chegar a sua raiz quadrada. Caso ele não ache nenhum número divisivel até chegar a raiz quadrada ira dar true, caso contrario ira dar false
+        for ($i = 3; $i <= sqrt($numero); $i += 2) {
+            if ($numero % $i == 0) {
+                return false;
+            }
+        }
+        return true;
     }
-
-
+    // OBS: números primos são aqueles que são apenas divisiveis por eles mesmos (divisivel significa que ao fazer a divisão por número x não ira sobrar nada).
     
-    
-    
-    
-    
+    // Testando a função
+    $numero = 11;
+    if (ehPrimo($numero)) {
+        echo "$numero é um número primo.";
+    } else {
+        echo "$numero não é um número primo.";
+    }
     ?>
 </body>
 </html>
